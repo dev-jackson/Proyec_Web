@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-size: cover;
+    background-color: teal;
+    
+}
+.box{
+    top: 50%;
+    left: 50%;
+    transform: translate(75%,25%);
+    width: 40%;
+    padding:  60px;
+    background: rgba(255, 255, 255, 0.99);
+    box-sizing: border-box;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.99);
+    border-radius: 20px;
+}
+.imglogo{
+    height: 150px;
+    width: 100%;
+    margin: 1%;
+    padding: 0;
+    text-align: center;
+}
+.box .inputBox{
+    position: relative;
+}
+.box .inputBox input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid teal;
+    background: transparent;
+    
+}
+.box .inputBox label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0  px 0;
+    font-size: 16px;
+    color: black;
+    pointer-events: none;
+    transition: .5s;
+}
+
+
+.box .inputBox input:valid ~ label{
+    top: -18px;
+}
+.box .inputBox input:focus ~ label{
+    top: -25px;
+    left: 0;
+    color: #0433;
+
+}
+.box .inputBox input:focus{
+    border-bottom: 1px solid #03a9f4;
+}
+@media(max-width:780px){
+    .imglogo{
+        height: 100px;
+        width: 100%;
+        margin: -1%;
+        padding: 0;
+        text-align: center;
+    }
+    .box{
+        top: 50%;
+        left: 50%;
+        transform: translate(50%,45%);
+        width:50%;
+        padding:  60px;
+        background: rgba(255, 255, 255, 0.99);
+        box-sizing: border-box;
+        box-shadow: 0 10px 20px rgba(255, 255, 255, 0.99);
+        border-radius: 20px;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-size: cover;
+    
+        
+    }
+}
+
+.box2{
+    top: 50%;
+    left: 50%;
+    transform: translate(75%,10%);
+    width: 40%;
+    padding:  60px;
+    background: rgba(255, 255, 255, 0.99);
+    box-sizing: border-box;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.99);
+    border-radius: 20px;
+}
+.imglogo{
+    height: 200px;
+    width: 100%;
+    margin: 1%;
+    padding: 0;
+    text-align: center;
+}
+.box2 .inputBox2{
+    position: relative;
+}
+.box2 .inputBox2 input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid teal;
+    background: transparent;
+    
+}
+.box2 .inputBox2 label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0  px 0;
+    font-size: 16px;
+    color: black;
+    pointer-events: none;
+    transition: .5s;
+}
+
+
+.box2 .inputBox2 input:valid ~ label{
+    top: -18px;
+}
+.box2 .inputBox2 input:focus ~ label{
+    top: -25px;
+    left: 0;
+    color: #0433;
+
+}
+.box2 .inputBox2 input:focus{
+    border-bottom: 1px solid #03a9f4;
+}
+@media(max-width:780px){
+    .imglogo{
+        height: 100px;
+        width: 100%;
+        margin: -1%;
+        padding: 0;
+        text-align: center;
+    }
+    .box{
+        top: 50%;
+        left: 50%;
+        transform: translate(50%,45%);
+        width:50%;
+        padding:  60px;
+        background: rgba(255, 255, 255, 0.99);
+        box-sizing: border-box;
+        box-shadow: 0 10px 20px rgba(255, 255, 255, 0.99);
+        border-radius: 20px;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-size: cover;
+    
+        
+    }
+}
