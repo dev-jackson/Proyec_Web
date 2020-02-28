@@ -30,9 +30,9 @@
                 
                display:block;
            }</style>
-                <li><a href="index.php">INICIO</a></li>
-                <li><a href="somos.php">QUIENES SOMOS</a></li>
-                <li><a href="category.php">CATALOGO</a></li>
+                <li><a href="index.php?">INICIO</a></li>
+                <li><a href="index.php?a=static&p=somos">QUIENES SOMOS</a></li>
+                <li><a href="index.php?a=dynamic&p=category">CATALOGO</a></li>
                 <!--<li><a href="blog.php">BLOG</a></li>-->
                 <li><a id="log" href="login.php">INICIAR SESION</a></li>
                 <li id="indicador"><a id="exit" href="">INGRESADO</a>

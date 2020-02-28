@@ -25,11 +25,8 @@
         li{
             list-style: none;
         }
-        
     </style>
-  <?php 
-      include_once("./assets/php/init_sest.php")
-    ?>
+
 </head>
 <body onload="loginTesting();">
     <div class="global-container">
@@ -47,6 +44,30 @@
             </ul>
              </div>
         </div>
+        <ul class="cards">
+          <li class="cards_item">
+      <div class="card">
+        <div class="card_image"><img src="./assets/img/ropahombre.png"></div>
+        <div class="card_content">
+          <h2 class="card_title">Descripcion</h2>
+          <p class="card_text"></p>
+          <h5 >Estado:</h3> 
+          <a class='btn card_btn'>Agregar a Lista</a>
+        </div>
+      </div>
+    </li>
+    <li class="cards_item">
+      <div class="card">
+        <div class="card_image"><img src="./assets/img/ropamujer1.png"></div>
+        <div class="card_content">
+          <h2 class="card_title">Descripcion</h2>
+          <p class="card_text"></p>
+          <h5 >Estado:</h3> 
+          <a class='btn card_btn'>Agregar a Lista</a>
+        </div>
+      </div>
+    </li>
+    </ul>
            <div class="categ">
                    <h1>CATEGORIAS</h1>
                    <ul>
@@ -70,7 +91,7 @@
                   
                </ul>   
            </div>
-           
+    </div>
    <script type="text/javascript" src="assets/js/index.js"></script>
 </body>
 </html>

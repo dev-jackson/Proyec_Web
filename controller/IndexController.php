@@ -10,5 +10,19 @@
             require_once 'views/static/inicio.php'; 
             require_once FOOTER;
         }
+        public function static(){
+            $page = $_REQUEST['p'];
+            require_once LIB;
+            require_once HEADER;
+            require_once 'views/static/'.$page.'.php';
+            require_once FOOTER;   
+        }
+        public function dynamic(){
+            $page = $_REQUEST['p'];
+            require_once LIB;
+            require_once HEADER;
+            require_once 'views/dynamic/'.$page.'.php';
+            require_once FOOTER;
+        }
     }
 ?>
