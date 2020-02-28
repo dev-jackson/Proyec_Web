@@ -3,12 +3,7 @@
     position: absolute;
 }
 
-.container{
-    margin: auto;
-    top: 90%;
-    left: 90%;
-    margin-left: -20px;
-}
+
 #toggle{
     display: none;
 }

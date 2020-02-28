@@ -194,8 +194,8 @@ footer .ft ._head:before {
         width: 100%;
     }
     .categ{
-        margin: 10px;
-    
+        margin: 100px;
+        display: block;
     }
     .categ ul{
         display:flex;
@@ -227,6 +227,7 @@ footer .ft ._head:before {
         padding: 2px 10px;
       }
       footer .ft {
+    float: left;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }

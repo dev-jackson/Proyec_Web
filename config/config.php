@@ -1,7 +1,8 @@
 <?php
     //ENCABEZADO Y PIE
-define('HEADER','view/plantillas/header.php');
-define('FOOTER','view/plantillas/footer.php');
+define('HEADER','views/templates/header.php');
+define('FOOTER','views/templates/footer.php');
+define('LIB','assets/librerias.php');
 
 //RUTAS PARA BASE DE DATOS
 define("SERVIDORBD","localhost");
