@@ -4,18 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/login.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <title>Registor</title>
-    <?php 
-      include_once("./assets/php/init_sest.php")
-    ?>
 </head>
 <body>
 <div class="box2">
       <img src="./assets/img/logo.png" alt="" class="imglogo">
-      <form action="./assets/php/user.php" method="POST">
+      <form action="javascript:void(0)" method="POST" class="fromRegister">
         <div class="inputBox2">
           <input type="text" name="username">
           <label for="">Nombre Usuario</label>
@@ -28,10 +22,25 @@
           <input type="password"name="pws">
           <label for="">Ingrese Contraseña Nuevamente</label>
         </div>
-        <button type="button" class="btn btn-primary">Registrarte</button>
+        
+        <button type="submit" class="btn btn-primary" id="btnRegistro">Registrarte</button>
       </form>
     </div>        
 
 
 </body>
+<script type="text/javascript">
+  $(document).ready(function($){
+    $(".fromRegister").submit(function(e){
+      $.ajax({
+        type: "POST",
+        url: "",
+        data: $(this).serialize(),
+        success: function(data){
+
+        }
+      });
+    });
+  });
+</script>
 </html>
