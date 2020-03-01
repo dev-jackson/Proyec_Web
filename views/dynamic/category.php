@@ -31,10 +31,10 @@
 <div class="main2">
  
   <ul class="cards">
-   
+   <?php foreach($res as $r):?>
     <li class="cards_item">
       <div class="card">
-        <div class="card_image"><img src="./assets/img/ropahombre.png"></div>
+        <div class="card_image"><img height="70px" src="data:image/png;base64,'<?php echo base64_encode($r["imagen"]);?>'"></div>
         <div class="card_content">
           <h2 class="card_title">Descripcion</h2>
           <p class="card_text"><?php //echo $rs['observaciones']?>
@@ -43,63 +43,11 @@
         </div>
       </div>
     </li>
-     
+  <?php 
+endforeach;?>
      
     </ul>
 </div>
-
-</body>        <script>
-        function addCode(){
-        var algo=" <li>"+
-    "<div class='card'>"+
-              "<img src='./assets/img/ropahombre.png' alt='Avatar' style='width:100%'>"+
-               "<div class='container'>"+
-                 "<h4><b>Ropa Hombre</b></h4>"+
-                 "<p>Visualizar</p>"+
-               "</div>"+
-        "</div>"+
-    "</li>"+
-    "<li>"
-    document.getElementById("add_after_me").insertAdjacentHTML("afterend",algo);
-}  
-function addCodeM(){
-        var algo=" <li>"+
-    "<div class='card'>"+
-              "<img src='./assets/img/muestra2.png' alt='Avatar' style='width:100%'>"+
-               "<div class='container'>"+
-                 "<h4><b>Ropa Mujer</b></h4>"+
-                 "<p>Visualizar</p>"+
-               "</div>"+
-        "</div>"+
-    "</li>"+
-    "<li>"
-    document.getElementById("add_after_me_2").insertAdjacentHTML("afterend",algo);
-}  
- </script>
- <script type="text/javascript" >
-        function loginTesting2(){
-            var tipo='<?php echo $varsesion?>';
-            if(tipo =='admin'){
-                document.getElementById('card-add').style.display='block';
-                document.getElementById('log').style.display='none';
-                document.getElementById('indicador').style.display='block';      
-            }else{
-               if(tipo=='usuario'){
-                  document.getElementById('card-add').style.display='none';
-                  document.getElementById('log').style.display='none';
-                  document.getElementById('indicador').style.display='block';
-               }else{
-
-                document.getElementById('card-add').style.display='none';
-                  document.getElementById('log').style.display='block';
-                  document.getElementById('indicador').style.display='none';
-               }
-               
-            }
-
-        }
-            
-        </script>   
-       <script type="text/javascript" src="./assets/js/index.js"></script>
+      
 </body>
 </html>

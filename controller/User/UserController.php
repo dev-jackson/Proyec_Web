@@ -2,11 +2,14 @@
     require_once 'config/config.php';
     require_once 'model/DAO/UsuarioDAO.php';
     require_once 'model/DTO/Usuario.php';
+    require_once 'model/DAO/ArticuloDAO.php';
     class UserController{
         private $user;
+        private $art;
 
         public function __construct(){
             $this->user = new UsuarioDAO();
+            $this->art = new ArticuloDAO();
         }
 
         public function login(){
@@ -48,6 +51,13 @@
             }else{
                 echo "";
             }
+        }
+        public function showAllArticulos(){
+            $res = $this->art->getAllArticulo();
+            require_once LIB;
+            require_once HEADER;
+            require_once "views/dynamic/category.php";
+            require_once FOOTER;
         }
         public function destroySession(){
             session_start();

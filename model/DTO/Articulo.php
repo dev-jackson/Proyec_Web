@@ -1,7 +1,7 @@
 <?php
     class Articulo{
         private $id_articulo;
-        private $imagen:
+        private $imagen;
         private $descripcion;
         private $costo;
 
@@ -12,7 +12,7 @@
             return $this->imagen;
         }
         public function getDescripcion(){
-            return $this->descripcion:
+            return $this->descripcion;
         }
         public function getCosto(){
             return $this->costo;
@@ -26,8 +26,8 @@
         public function setDescripcion($descripcion){
             $this->descripcion = $descripcion;
         }
-        public function setCosto($costo)[
+        public function setCosto($costo){
             $this->costo = $costo;
-        ]
+        }
     }
 ?>

@@ -24,7 +24,7 @@
            }</style>
                 <li><a href="index.php?">INICIO</a></li>
                 <li><a href="index.php?a=static&p=somos">QUIENES SOMOS</a></li>
-                <li><a href="index.php?a=dynamic&p=category">CATALOGO</a></li>
+                <li><a href="index.php?c=User&a=showAllArticulos">CATALOGO</a></li>
                 <!--<li><a href="blog.php">BLOG</a></li>-->
                
                 <li> <?php

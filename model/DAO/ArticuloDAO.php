@@ -1,6 +1,6 @@
 <?php
     require_once 'model/Connection.php';
-    require_once 'model/Articulo.php';
+    require_once 'model/DTO/Articulo.php';
 
     class ArticuloDAO{
         private $con;
@@ -17,7 +17,7 @@
             try{
                 $stm = $this->con->prepare($sql);
                 $stm->execute();
-                return $stm->fetch(PDO::FETCH_ASSOC);
+                return $stm->fetchAll(PDO::FETCH_ASSOC);
             }catch(Exception $e){
                 echo $e->getMessage();
             }
