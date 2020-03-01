@@ -38,3 +38,33 @@
     </div>
     
 </footer>
+<script>
+    function cerrar(){
+         swal({
+                     closeOnClickOutside:false,
+                     title: "Aviso !",
+                     text: "Esta seguro de cerrar Sesion",
+                     icon: "warning",
+                     buttons: {
+                     si:{ 
+                      text:"si",
+                      value:"si"
+                      },
+                      no:{ 
+                      text:"no",
+                      value:"no"
+                      },
+                      },
+                })
+                .then((value) => {
+                switch (value) {                                     
+                case "si":
+                           window.location.href ="index.php?c=User&a=destroySession";    
+                  break;
+                case "no":
+                               
+                  break;
+            }
+          })
+    }
+</script>

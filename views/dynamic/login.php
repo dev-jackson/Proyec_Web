@@ -31,13 +31,14 @@
 <body background="./assets/img/fondo_login.jfif">
 <div class="box">
       <img src="./assets/img/logo.png" alt="" class="imglogo">
-      <form action="./assets/php/user.php" method="POST">
+      <form action="javascript:void(0);" method="POST" id="fromLogin">
         <div class="inputBox">
-          <input type="text" name="username">
-          <label for="">Username</label>
+           <span id="mensaje" style="float: right;"></span>
+          <input type="text" name="username" id="uname" maxlength="10" onkeypress="return justNumbers(event);">
+          <label for="">Username(CI)</label>
         </div>  
         <div class="inputBox">
-          <input type="password"name="pws">
+          <input type="password" name="pws" id="pws">
           <label for="">Contraseña</label>
         </div>
         <button type="submit" class="btn_submit" >Entrar</button>
@@ -47,6 +48,70 @@
 
 
 </body>
+
+<script>
+function justNumbers(e)
+        {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+        return /\d/.test(String.fromCharCode(keynum));
+        }
+
+$('body').on('keyup', '#uname', function(){
+  var Cedula = this.value;
+
+  // Aqui esta el patron(expresion regular) a buscar en el input
+  patroncedula = /^([0-9]{10})$/;
+  
+  if( patroncedula.test(Cedula) )
+  {
+    $('#mensaje').text('Formato correcto!');
+    $('#mensaje').css({"color":"green"})
+    $('#ingresar').attr('disabled',false);
+
+
+  }
+  else if(Cedula==''){
+  	$('#mensaje').text('');
+    $('#ingresar').attr('disabled',false);
+  }
+
+  else
+  {
+     $('#mensaje').text('Formato incorrecto');
+     $('#mensaje').css({"color":"red"})
+     $('#ingresar').attr('disabled',true);
+
+  }
+});
+  $(document).ready(function($){
+    $("#fromLogin").submit(function(e){  
+      var ci=$("#uname").val();
+      var pass=$("#pws").val();
+      if(ci==''||pass==''){
+        swal("Debe llenar todos los campos","Se requieren llenar campos", "info")
+      }else{
+        $.ajax({
+          type:"POST",
+          url:"index.php?c=User&a=login",
+          data:$(this).serialize(),
+          success:function(data){
+            if(data){
+              swal("Logeo Existoso","Bienvenido","success");
+              setTimeout(() => {
+                window.location.href="index.php?"
+              }, 1500);
+            }else{
+              swal("Usuario no contrado","Usuario no existe o credenciales incorrectas",'error')
+            }
+          }
+        });
+      }
+      
+    });
+  });
+</script>
 </html>
 	
 	

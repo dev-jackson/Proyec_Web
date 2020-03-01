@@ -72,7 +72,7 @@ $('body').on('keyup', '#uname', function(){
     $('#mensaje').text('Formato correcto!');
     $('#mensaje').css({"color":"green"})
     $('#btnRegistro').attr('disabled',false);
-    validateExisUser();
+    //validateExisUser();
 
   }
   else if(Cedula==''){
@@ -111,9 +111,14 @@ function justLetters(e){
         url: "index.php?c=User&a=registerUser",
         data: $(this).serialize(),
         success: function(data){
-          if(data=="t"){
+          if(data){
+            console.log(data);
               swal("Usuario Creado","Usuario Validado","success");
+              setTimeout(() => {
+                window.location.href="index.php?";
+              }, 1500);
           }else{
+            console.log(data);
             swal("Error a crear usuario","Usuario no Creado",'error');
           }
         }

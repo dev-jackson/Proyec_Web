@@ -11,11 +11,19 @@
 
         public function login(){
             $nombre = $_POST['username'];
+            $clave="";
+            if(isset($_POST['pws'])){
+                $clave=$_POST['pws'];
+            }
             $res=$this->user->validateUsuario($nombre);
-            if(!empty($res)){
+            if(empty($res)){
                 echo "";
+            }elseif(password_verify($clave,$res['clave'])){
+                    echo "e";
+                    session_start();
+                    $res['tipo_usuario']=="C"? $_SESSION['C']=$res['nombre']:$_SESSION['A']=$res['nombre'];
             }else{
-                echo "e";
+                echo "";
             }
         }
         public function registerUser(){
@@ -24,13 +32,13 @@
             $u->setNombre($_POST['nombre']);
             $u->setApellido($_POST['apellido']);
             $u->setClave($_POST['pws']);
-            $u->setTipo('U');
+            $u->setTipo('C');
             $this->user->insertUsuario($u);
             $res= $this->user->getUsuario();
-            if($res["id_usuario"]==$u->getId()){
-                if($res["tipo_usuario"]=="U"){
+            if($res["id_usuario"]=$u->getId()){
+                if($res["tipo_usuario"]="C"){
                     session_start();
-                    $_SESSION['U']=$u->getNombre();
+                    $_SESSION['C']=$u->getNombre();
                     echo "t";
                 }else{
                     session_start();
@@ -40,6 +48,11 @@
             }else{
                 echo "";
             }
+        }
+        public function destroySession(){
+            session_start();
+            session_destroy();
+            header("Location: index.php?");
         }
     }
 ?>

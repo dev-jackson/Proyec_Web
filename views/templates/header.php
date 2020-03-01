@@ -1,12 +1,4 @@
-<?php
-        
-        $varsesion = isset($_SESSION['usuario']);
-        if($varsesion){
-            $varsesion = $_SESSION['usuario'];
-        }else{
-            
-        }
-    ?>
+<?php session_start();?>
         
        <header>
     <div class="pages-navigation">
@@ -34,30 +26,26 @@
                 <li><a href="index.php?a=static&p=somos">QUIENES SOMOS</a></li>
                 <li><a href="index.php?a=dynamic&p=category">CATALOGO</a></li>
                 <!--<li><a href="blog.php">BLOG</a></li>-->
-                <li><a id="log" href="index.php?a=dynamic&p=login">INICIAR SESION</a></li>
-                <li id="indicador"><a id="exit" href="">INGRESADO</a>
+               
+                <li> <?php
+                    if(empty($_SESSION)){
+                        echo "<a id='log' href='index.php?a=dynamic&p=login'>INICIAR SESION</a>";
+                    }elseif(isset($_SESSION['C'])){
+                        echo "<a id='exit' onclick='cerrar();'>".$_SESSION['C']."</a>";
+                    }else{
+                        echo "<a id='exit'  onclick='cerrar();'> ".$_SESSION['A']."(Adm)</a>";
+                    }
+                ?></li>
+                <!--<li id="indicador"><a id="exit" href="">INGRESADO</a>
                     <ul>
                         <li><a id="lg" href="./assets/php/close_ses.php">SALIR</a></li>
-                    </ul></li>
+                    </ul></li>-->
            </ul>
        </nav>
     </div>
    
     <script type="text/javascript" >
-        function loginTesting(){
-            var tipo='<?php echo $varsesion?>';
-            if(tipo =='usuario' || tipo =='admin'){
-                document.getElementById('log').style.display='none';
-                document.getElementById('indicador').style.display='block';
-                    
-            }else{
-                document.getElementById('log').style.display='bloc';
-                document.getElementById('indicador').style.display='none';
-            
-
-            }
-
-        }
+     
         </script>   
 </header> 
 

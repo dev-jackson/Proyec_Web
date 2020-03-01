@@ -28,7 +28,7 @@
     </style>
 
 </head>
-<body onload="loginTesting();">
+<body   >
     <div class="global-container">
         
         <div class="sect-1" style="background-image: url('./assets/img/fondo3.png');">
@@ -44,7 +44,7 @@
             </ul>
              </div>
         </div>
-        <ul class="cards">
+        <ul class="cards" >
           <li class="cards_item">
       <div class="card">
         <div class="card_image"><img src="./assets/img/ropahombre.png"></div>
@@ -92,6 +92,5 @@
                </ul>   
            </div>
     </div>
-   <script type="text/javascript" src="assets/js/index.js"></script>
 </body>
 </html>
