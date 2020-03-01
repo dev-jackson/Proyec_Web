@@ -34,7 +34,7 @@
                 <li><a href="index.php?a=static&p=somos">QUIENES SOMOS</a></li>
                 <li><a href="index.php?a=dynamic&p=category">CATALOGO</a></li>
                 <!--<li><a href="blog.php">BLOG</a></li>-->
-                <li><a id="log" href="login.php">INICIAR SESION</a></li>
+                <li><a id="log" href="index.php?a=dynamic&p=login">INICIAR SESION</a></li>
                 <li id="indicador"><a id="exit" href="">INGRESADO</a>
                     <ul>
                         <li><a id="lg" href="./assets/php/close_ses.php">SALIR</a></li>

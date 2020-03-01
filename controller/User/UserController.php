@@ -10,16 +10,36 @@
         }
 
         public function login(){
-        
+            $nombre = $_POST['username'];
+            $res=$this->user->validateUsuario($nombre);
+            if(!empty($res)){
+                echo "";
+            }else{
+                echo "e";
+            }
         }
         public function registerUser(){
             $u = new Usuario();
-            $u->setId($_POST['id']);
+            $u->setId($_POST['username']);
             $u->setNombre($_POST['nombre']);
-            $u->setApellido($_POST['nombre']);
-            $u->setClave($_POST['clave']);
+            $u->setApellido($_POST['apellido']);
+            $u->setClave($_POST['pws']);
             $u->setTipo('U');
             $this->user->insertUsuario($u);
+            $res= $this->user->getUsuario();
+            if($res["id_usuario"]==$u->getId()){
+                if($res["tipo_usuario"]=="U"){
+                    session_start();
+                    $_SESSION['U']=$u->getNombre();
+                    echo "t";
+                }else{
+                    session_start();
+                    $_SESSION['A']=$u->getNombre();
+                    echo "t";
+                }
+            }else{
+                echo "";
+            }
         }
     }
 ?>

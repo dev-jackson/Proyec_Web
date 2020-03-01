@@ -1,5 +1,5 @@
 <?php
-    require_once 'model/Connetion.php';
+    require_once 'model/Connection.php';
     require_once 'model/DTO/Usuario.php';
    class UsuarioDAO{
        private $con;
@@ -20,10 +20,10 @@
                 echo $e->getMessage();
            }
        }
-       public function validateUsuario($usuario){
+       public function validateUsuario($nombre){
             try{
                 $stm =$this->con->prepare("SELECT *FROM usuario WHERE nombre= ? ");
-                $stm->execute(array($usuario));
+                $stm->execute(array($nombre));
                 return $stm->fetch(PDO::FETCH_ASSOC);
             }catch(Exception $e){
                 echo $e->getMessage();
