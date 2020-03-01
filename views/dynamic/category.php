@@ -20,19 +20,15 @@
         li{
             list-style: none;
         }
-        .grid{
-        display: grid;
-        grid-template-columns: repeat(4, 2fr);
-        /*grid-template-columns: 1fr 1fr;*/
-        grid-template-rows: 1fr 1fr;
+
     }
         
     </style>
 
     <title>Document</title>
 </head>
-<body onload="loginTesting2();">
-<div class="main">
+<body >
+<div class="main2">
  
   <ul class="cards">
    
@@ -40,7 +36,7 @@
       <div class="card">
         <div class="card_image"><img src="./assets/img/ropahombre.png"></div>
         <div class="card_content">
-          <h2 class="card_title">Descripcion de Sintomas</h2>
+          <h2 class="card_title">Descripcion</h2>
           <p class="card_text"><?php //echo $rs['observaciones']?>
           <p>Fecha: <?php //echo $rs['fecha'];?></p></p>
           <h5 >Estado:</h3>

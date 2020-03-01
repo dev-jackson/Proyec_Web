@@ -11,18 +11,13 @@
 html {
   background-color: #ecf9ff;
 }
-
-body {
-  color: #272727;
-  font-family: 'Quicksand', serif;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
-  padding: 0rem;
-}
-
 .main{
   max-width: 1200px;
+  margin: 0 auto 10px 300px;
+
+}
+.main2{
+  max-width: 100%;
   margin: 0 auto;
 
 }
@@ -36,7 +31,7 @@ h1 {
 img {
   height: auto;
   max-width: 100%;
-  vertical-align: middle;
+  vertical-align: initial;
 }
 
 .btn {
@@ -58,38 +53,36 @@ img {
 }
 
 .cards {
-  display: inline;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  display: inline-block;
 }
 
 .cards_item {
-  display: flex;
+  display: inline-block;
   padding: 1.5rem;
 }
 
 @media (min-width: 40rem) {
   .cards_item {
-    width: 60%;
+    width: 80%;
   }
 }
 
 @media (min-width: 56rem) {
   .cards_item {
-    width: 70.3333%;
+   padding: 40px;
+   margin: 10px;
+    width: 30.3333%;
   }
 }
 
 .card {
   background-color: white;
-  border-radius: 0.25rem;
+  border-radius: 0.15rem;
   box-shadow: 0 20px 40px 1px rgba(0, 0, 0, 0.25);
-  display: flex;
+  display: inline-block;
   border-radius: 10px;
-  flex-direction: column;
   overflow: hidden;
+  width: 100%;
 }
 
 .card_content {

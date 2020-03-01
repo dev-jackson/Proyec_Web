@@ -44,6 +44,7 @@
             </ul>
              </div>
         </div>
+        <div class="main">
         <ul class="cards" >
           <li class="cards_item">
       <div class="card">
@@ -51,8 +52,6 @@
         <div class="card_content">
           <h2 class="card_title">Descripcion</h2>
           <p class="card_text"></p>
-          <h5 >Estado:</h3> 
-          <a class='btn card_btn'>Agregar a Lista</a>
         </div>
       </div>
     </li>
@@ -62,34 +61,12 @@
         <div class="card_content">
           <h2 class="card_title">Descripcion</h2>
           <p class="card_text"></p>
-          <h5 >Estado:</h3> 
-          <a class='btn card_btn'>Agregar a Lista</a>
+        
         </div>
       </div>
     </li>
     </ul>
-           <div class="categ">
-                   <h1>CATEGORIAS</h1>
-                   <ul>
-                   <li><div class="card ">
-                           <img src="./assets/img/ropamujer1.png" alt="Avatar" style="width:100%">
-                           <div class="container">
-                             <h4><b>Ropa Mujer</b></h4>
-                             <p>Visualizar</p>
-                           </div>
-                    </div>
-                   </li>
-                   <li>
-                    <div class="card ">
-                           <img src="./assets/img/ropahombre.png" alt="Avatar" style="width:100%">
-                           <div class="container">
-                             <h4><b>Ropa Hombre</b></h4>
-                             <p>Visualizar</p>
-                           </div>
-                    </div>
-                   </li>
-                  
-               </ul>   
+    </div>
            </div>
     </div>
 </body>
