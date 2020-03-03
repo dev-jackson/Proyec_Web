@@ -48,6 +48,6 @@ endforeach;?>
      
     </ul>
 </div>
-      
+  <a href="index.php?a=dynamic&p=CrearArticulo">Ir</a>    
 </body>
 </html>
