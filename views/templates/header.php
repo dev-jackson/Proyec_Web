@@ -24,7 +24,14 @@
            }</style>
                 <li><a href="index.php?">INICIO</a></li>
                 <li><a href="index.php?a=static&p=somos">QUIENES SOMOS</a></li>
-                <li><a href="index.php?c=User&a=showAllArticulos">CATALOGO</a></li>
+                <li><a href="index.php?c=User&a=showAllArticulosH">CATALOGO</a></li>
+                <li><?php
+                    if(!empty($_SESSION)){
+                        if(isset($_SESSION['C'])){
+                            echo "<li><a href=index.php'>MIS DESEOS</a></li>";
+                        }
+                    }
+                ?></li>
                 <!--<li><a href="blog.php">BLOG</a></li>-->
                
                 <li> <?php

@@ -24,7 +24,11 @@
             }elseif(password_verify($clave,$res['clave'])){
                     echo "e";
                     session_start();
-                    $res['tipo_usuario']=="C"? $_SESSION['C']=$res['nombre']:$_SESSION['A']=$res['nombre'];
+                    if($res['tipo_usuario']=="C"){
+                        $_SESSION['C']=$res['nombre']; 
+                    }else{
+                        $_SESSION['A']=$res['nombre'];
+                    }
             }else{
                 echo "";
             }
@@ -52,11 +56,18 @@
                 echo "";
             }
         }
-        public function showAllArticulos(){
-            $res = $this->art->getAllArticulo();
+        public function showAllArticulosH(){
+            $res = $this->art->getAllArticuloH();
             require_once LIB;
             require_once HEADER;
-            require_once "views/dynamic/category.php";
+            require_once "views/dynamic/categoryH.php";
+            require_once FOOTER;
+        }
+        public function showAllArticulosM(){
+            $res = $this->art->getAllArticuloM();
+            require_once LIB;
+            require_once HEADER;
+            require_once "views/dynamic/categoryM.php";
             require_once FOOTER;
         }
         public function destroySession(){

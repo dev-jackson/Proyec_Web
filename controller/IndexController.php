@@ -19,7 +19,7 @@
         }
         public function dynamic(){
             $page = $_REQUEST['p'];
-            if($page=='registrar'||$page=='login'){
+            if($page=='registrar'||$page=='login'||$page=='CrearArticulo'){
                 require_once LIB;
                 require_once 'views/dynamic/'.$page.'.php';
             }else{

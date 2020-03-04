@@ -12,6 +12,7 @@ html {
   background-color: #ecf9ff;
 }
 .main{
+  
   max-width: 1200px;
   margin: 0 auto 10px 300px;
 
@@ -29,7 +30,7 @@ h1 {
 }
 
 img {
-  height: auto;
+  height: 300px;
   max-width: 100%;
   vertical-align: initial;
 }
@@ -71,7 +72,7 @@ img {
   .cards_item {
    padding: 40px;
    margin: 10px;
-    width: 30.3333%;
+    width: 22.3333%;
   }
 }
 

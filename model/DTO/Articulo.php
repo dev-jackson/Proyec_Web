@@ -4,6 +4,8 @@
         private $imagen;
         private $descripcion;
         private $costo;
+        private $tipo;
+        private $para;
 
         public function getId(){
             return $this->id_articulo;
@@ -17,6 +19,12 @@
         public function getCosto(){
             return $this->costo;
         }
+        public function getTipo(){
+            return $this->tipo;
+        }
+        public function getPara(){
+            return $this->para;
+        }
         public function setId($id){
             $this->id_articulo = $id;
         }
@@ -28,6 +36,12 @@
         }
         public function setCosto($costo){
             $this->costo = $costo;
+        }
+        public function setTipo($tipo){
+            $this->tipo = $tipo;
+        }
+        public function setPara($para){
+            $this->para = $para;
         }
     }
 ?>

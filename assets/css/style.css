@@ -83,7 +83,9 @@ footer .ft ._head:before {
     bottom: 0;
     background: black;
 }
+
 @media(max-width:780px){
+    
     #menu-bars{
        float: right;
        padding: 30px;

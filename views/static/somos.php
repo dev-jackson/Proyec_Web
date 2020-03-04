@@ -26,9 +26,6 @@
         }
         
     </style>
-    <?php 
-      include_once("./assets/php/init_sest.php");
-    ?>
 </head>
 <body onload="loginTesting();">
     <div class="global-container"><header>
