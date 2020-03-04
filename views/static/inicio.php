@@ -46,18 +46,18 @@
         </div>
         <div class="main">
         <ul class="cards" >
-          <li class="cards_item">
+          <li class="cards_item" style="width:28%;">
       <div class="card">
-        <div class="card_image"><img src="./assets/img/ropahombre.png"></div>
+        <div class="card_image"><img src="./assets/img/ropahombre.png" style="width:100%;"></div>
         <div class="card_content">
           <h2 class="card_title">Descripcion</h2>
           <p class="card_text"></p>
         </div>
       </div>
     </li>
-    <li class="cards_item">
+    <li class="cards_item" style="width:28%;">
       <div class="card">
-        <div class="card_image"><img src="./assets/img/ropamujer1.png"></div>
+        <div class="card_image"><img src="./assets/img/ropamujer1.png" style="width:100%;"></div>
         <div class="card_content">
           <h2 class="card_title">Descripcion</h2>
           <p class="card_text"></p>

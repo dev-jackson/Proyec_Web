@@ -2,7 +2,6 @@
   
   <footer class="txt-white font-p-h">
     <div class="ft container">
-x
         <div class="info ft_" >
             <div class="_head">
                 <h2 class="tittle">Información</h2>

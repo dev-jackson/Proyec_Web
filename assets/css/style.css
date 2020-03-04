@@ -31,7 +31,7 @@ header .pages-navigation #menu-bars {
 
 header nav {
     max-height: 0;
-    height: 0;
+    height: 40px;
     transition: 1s;
     overflow: hidden;
 }
@@ -215,7 +215,7 @@ footer .ft ._head:before {
       }
       footer .ft {
         display: grid;
-        grid-template-columns: repeat(4, 2fr);
+        grid-template-columns: repeat(5, 1fr);
         background: teal;
         width: 100%;
     }

@@ -77,8 +77,8 @@
               if(isset($_SESSION['A'])){
                 echo "<button id='Eliminar' class='btn card_btn' name='subject' type='submit' value='".$r['id_articulo']." ".$r['id_genero']." ".$r['id_tipo']."'>Eliminar</button>";
                 echo "<button id='Actualizar' class='btn card_btn' name='subject' type='submit' value='".$r['id_articulo']." ".$r['id_genero']." ".$r['id_tipo']."'>Actualizar</button>";
-              }elseif($_SESSION['C']){
-                echo "<button id='Agregar' class='btn card_btn' name='subject' type='submit' value='".$r['id_articulo']." ".$r['id_genero']." ".$r['id_tipo']."'>Aregar a Deseos</button>";
+              }elseif(isset($_SESSION['C'])){
+                echo "<button id='Agregar'  class='btn card_btn'  value='".$r['id_articulo']." ".$_SESSION['C']." ".$r['id_tipo']."'>Aregar a Deseos</button>";
               }
           }
              //echo "<a class='btn card_btn' href='index.php?c=Admin&a=updateEstado&es=R'>Rechazar</a>";
@@ -93,8 +93,8 @@ endforeach;?>
 </div>    
 </body>
 <script>
-$(document).ready(function(e){
-            $("#Eliminar").on('click',function(e){
+$(document).on("click","#Agregar",function(){
+            /*$("#Eliminar").on('click',function(e){
                 //console.log();
                 swal({
                      closeOnClickOutside:false,
@@ -121,7 +121,110 @@ $(document).ready(function(e){
                   id_ge: cadena[1],
                   id_tipo: cadena[2]
                 };
-                e.preventDefault();
+                $.ajax({
+                    type:"POST",
+                    url: "index.php?c=Admin&a=deleteArticulo",
+                    data: date,
+                    dataType:"json",
+                    success: function(data){
+                        if(data){
+                            swal("Articulo Eliminado","Correcto","success");
+                            setTimeout(() => {
+                            window.location.href="index.php?c=User&a=showAllArticulosH"
+                            }, 1500);
+                            console.log(data);
+                        }else{
+                            swal("Usuario no Creado","Articulo Erroneo",'error')
+                        }
+                    }
+                });    
+                  break;
+                case "no":
+                               
+                  break;
+            }
+          });
+            });*/
+           
+            swal({
+                     closeOnClickOutside:false,
+                     title: "Aviso !",
+                     text: "Esta seguro de Agregar Deseo?",
+                     icon: "warning",
+                     buttons: {
+                     si:{ 
+                      text:"SI",
+                      value:"si"
+                      },
+                      no:{ 
+                      text:"NO",
+                      value:"no"
+                      },
+                      },
+                })
+                .then((value) => {
+                switch (value) {                                     
+                case "si":
+                var cadena=this.value.split(" ",3);
+                var date={
+                  "id_art": cadena[0],
+                  "name": cadena[1]
+                };
+                $.ajax({
+                    type:"POST",
+                    url: "index.php?c=Client&a=AgregarDeseos",
+                    data: date,
+                    success: function(data){
+                        if(data){
+                            swal("Articulo Agregado a Deseos","Correcto","success");
+                            setTimeout(() => {
+                            window.location.href="index.php?c=User&a=showAllArticulosH"
+                            }, 1500);
+                        }else{
+                            swal("Articulo no Agregado a Deseos","Articulo Erroneo",'error');
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                }); 
+                break;
+                case "no":
+                               
+                  break;
+            }
+          });
+        });
+        //function add(){
+           
+        //}
+        $(document).on("click","#Eliminar",function(){
+            swal({
+                     closeOnClickOutside:false,
+                     title: "Aviso !",
+                     text: "Esta seguro de Eliminar Articulo",
+                     icon: "warning",
+                     buttons: {
+                     si:{ 
+                      text:"SI",
+                      value:"si"
+                      },
+                      no:{ 
+                      text:"NO",
+                      value:"no"
+                      },
+                      },
+                })
+                .then((value) => {
+                switch (value) {                                     
+                case "si":
+                  var cadena=$("#Eliminar").val().split(" ",3);
+                var date={
+                  id_art: cadena[0],
+                  id_ge: cadena[1],
+                  id_tipo: cadena[2]
+                };
                 $.ajax({
                     type:"POST",
                     url: "index.php?c=Admin&a=deleteArticulo",
@@ -146,6 +249,7 @@ $(document).ready(function(e){
             }
           });
             });
-        });
+
+     
 </script>
 </html>

@@ -20,6 +20,25 @@
                 echo $e->getMessage();
            }
        }
+       public function getUsuarioName($name){
+        try{
+         $stm = $this->con->prepare("SELECT *FROM usuario WHERE nombre= ? ");
+         $stm->execute(array($name));
+         return $stm->fetch(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+             echo $e->getMessage();
+        }
+    }
+        public function showDeseos($id){
+            $sql="SELECT *FROM articulo a, usuario_articulo ua where a.id_articulo=ua.id_articulo and ua.id_usuario= ?";
+            try{
+                $stm= $this->con->prepare($sql);
+                $stm->execute(array($id));
+                return $stm->fetchAll(PDO::FETCH_ASSOC);
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        }
        public function validateUsuario($id){
             try{
                 $stm =$this->con->prepare("SELECT *FROM usuario WHERE id_usuario= ? ");
@@ -43,6 +62,17 @@
            }catch(Exception $e){
             echo $e->getMessage();
            }
+       }
+       public function insertDeseo($id_articulo,$id_user){
+           $sql = "INSERT INTO usuario_articulo(`id_usuario`,`id_articulo`) VALUES(?,?)";
+            try{
+                $stm = $this->con->prepare($sql);
+                $stm->execute(array($id_user,$id_articulo));
+                return true;
+            }catch(PDOException $e){
+                echo $e->getMessage();
+                return false;
+            }
        }
    } 
 ?>

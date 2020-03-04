@@ -2,8 +2,8 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 03-03-2020 a las 03:48:39
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 04-03-2020 a las 18:59:26
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -36,6 +36,102 @@ CREATE TABLE `articulo` (
   `descripcion` varchar(500) NOT NULL,
   `costo` decimal(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `articulo`
+--
+
+INSERT INTO `articulo` (`id_articulo`, `imagen`, `descripcion`, `costo`) VALUES
+(14, 'assets/img/muestra3.jfif', 'Entallado', '15.00'),
+(16, 'assets/img/muestra2.png', 'Entallado', '15.00'),
+(17, 'assets/img/muestra4.png', 'Capucha', '20.00'),
+(18, 'assets/img/s-l300.jpg', 'Camiseta', '25.00'),
+(19, 'assets/img/rBVaR1vm7b6AGwOGAARAE37rAvc025.jpg', 'Entallado', '18.00'),
+(20, 'assets/img/51L9jBAqjgL._UX679_.jpg', 'Entallado', '22.00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `articulo_genero`
+--
+
+CREATE TABLE `articulo_genero` (
+  `id_articulo` int(10) NOT NULL,
+  `id_genero` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `articulo_genero`
+--
+
+INSERT INTO `articulo_genero` (`id_articulo`, `id_genero`) VALUES
+(14, 2),
+(16, 2),
+(17, 2),
+(18, 1),
+(19, 1),
+(20, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `articulo_tipo`
+--
+
+CREATE TABLE `articulo_tipo` (
+  `id_articulo` int(10) NOT NULL,
+  `id_tipo` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `articulo_tipo`
+--
+
+INSERT INTO `articulo_tipo` (`id_articulo`, `id_tipo`) VALUES
+(14, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `genero`
+--
+
+CREATE TABLE `genero` (
+  `id_genero` int(1) NOT NULL,
+  `tipo` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `genero`
+--
+
+INSERT INTO `genero` (`id_genero`, `tipo`) VALUES
+(1, 'Hombre'),
+(2, 'Mujer');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo`
+--
+
+CREATE TABLE `tipo` (
+  `id_tipo` int(1) NOT NULL,
+  `tipo_articulo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo`
+--
+
+INSERT INTO `tipo` (`id_tipo`, `tipo_articulo`) VALUES
+(1, 'Ropa'),
+(2, 'Accesorio');
 
 -- --------------------------------------------------------
 
@@ -84,6 +180,14 @@ CREATE TABLE `usuario_articulo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Volcado de datos para la tabla `usuario_articulo`
+--
+
+INSERT INTO `usuario_articulo` (`id_usuario`, `id_articulo`) VALUES
+('8888888888', 14),
+('8888888888', 17);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -91,7 +195,34 @@ CREATE TABLE `usuario_articulo` (
 -- Indices de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  ADD PRIMARY KEY (`id_articulo`);
+  ADD PRIMARY KEY (`id_articulo`),
+  ADD UNIQUE KEY `imagen` (`imagen`);
+
+--
+-- Indices de la tabla `articulo_genero`
+--
+ALTER TABLE `articulo_genero`
+  ADD KEY `id_articulo` (`id_articulo`,`id_genero`),
+  ADD KEY `id_genero` (`id_genero`);
+
+--
+-- Indices de la tabla `articulo_tipo`
+--
+ALTER TABLE `articulo_tipo`
+  ADD KEY `id_articulo` (`id_articulo`,`id_tipo`),
+  ADD KEY `id_tipo` (`id_tipo`);
+
+--
+-- Indices de la tabla `genero`
+--
+ALTER TABLE `genero`
+  ADD KEY `id_genero` (`id_genero`);
+
+--
+-- Indices de la tabla `tipo`
+--
+ALTER TABLE `tipo`
+  ADD KEY `id_tipo` (`id_tipo`);
 
 --
 -- Indices de la tabla `usuario`
@@ -114,11 +245,25 @@ ALTER TABLE `usuario_articulo`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `id_articulo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_articulo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `articulo_genero`
+--
+ALTER TABLE `articulo_genero`
+  ADD CONSTRAINT `articulo_genero_ibfk_1` FOREIGN KEY (`id_articulo`) REFERENCES `articulo` (`id_articulo`),
+  ADD CONSTRAINT `articulo_genero_ibfk_2` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id_genero`);
+
+--
+-- Filtros para la tabla `articulo_tipo`
+--
+ALTER TABLE `articulo_tipo`
+  ADD CONSTRAINT `articulo_tipo_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipo` (`id_tipo`),
+  ADD CONSTRAINT `articulo_tipo_ibfk_2` FOREIGN KEY (`id_articulo`) REFERENCES `articulo` (`id_articulo`);
 
 --
 -- Filtros para la tabla `usuario_articulo`

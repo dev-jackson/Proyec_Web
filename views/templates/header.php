@@ -1,12 +1,27 @@
 <?php session_start();?>
-        
-       <header>
-    <div class="pages-navigation">
+
+    <style>
+        .menu1{
+            margin:25px;
+            width: 50px; height: 25px;
+            border-radius:none;
+            float:right;
+        }
+        @media(min-width:780px){
+            .menu1{
+            display:none;
+            }
+        }
+    </style>
+       <header >
+       <div class="pages-navigation">
        <div class="flex space-btw">
-       <a href="index.php"><img class="imglogo" src="./assets/img/logo.png" alt="">
+       <img  onclick="toggle('#index-menu','active');" class="menu1" src="assets/img/menu.png">
+       <a href="#"><img class="imglogo" src="./assets/img/logo.png" alt=""></a>
         <div class="isotipo flex-center"><h1 class="imgtitle" ></a></h1></div>
-        <span id="menu-bars" class="hidden rith-y" onclick="toggle('#index-menu','active')"><i class="fas fa-bars"></i></span>
+        <span id="menu-bars" class="hidden rith-y" onclick="toggle('#index-menu','active');"><i class="fas fa-bars"><img src="assets/img/menu.png" alt="" srcset=""></i></span>
     </div>
+    
        <nav id="index-menu" class="menu font-p-h">
            <ul class="">
            <style>
@@ -28,7 +43,7 @@
                 <li><?php
                     if(!empty($_SESSION)){
                         if(isset($_SESSION['C'])){
-                            echo "<li><a href=index.php'>MIS DESEOS</a></li>";
+                            echo "<li><a href=index.php?c=Client&a=AllDeseos&name=".$_SESSION['C'].">MIS DESEOS</a></li>";
                         }
                     }
                 ?></li>
@@ -51,8 +66,6 @@
        </nav>
     </div>
    
-    <script type="text/javascript" >
-     
-        </script>   
+  <script src="assets/js/index.js"></script>
 </header> 
 
