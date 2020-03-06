@@ -47,5 +47,36 @@
             include_once LIB;
             include_once 'views/dynamic/CrearArticulo.php';
         }
+        public function UpdateArt(){
+            $a = new Articulo();
+            $ruta;
+            if(empty($_FILES['imagen'])){
+            $Imagen = $_FILES;
+            $ruta = "assets/img/".$Imagen['imagen']['name'];
+            }else{
+            $ruta=$_POST['imagenText'];
+            }
+            if(file_exists($ruta)){
+            }else{
+                move_uploaded_file($Imagen['imagen']['tmp_name'],$ruta);
+            }
+            $descript = $_POST['descript'];
+                $costo = $_POST['costo'];
+                $tipo = $_POST["radio-group1"];
+                $para = $_POST['radio-group'];
+                $id=$_POST['id_arti'];
+                $a->setId($id);
+                $a->setImagen($ruta);
+                $a->setDescripcion($descript);
+                $a->setCosto($costo);
+                $a->setTipo($tipo);
+                $a->setPara($para);
+                $resul=$this->art->UpArticulo($a);
+                if($resul){
+                    echo 't';
+                }else{
+                    echo '';
+                }
+        }
     }
 ?>

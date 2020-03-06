@@ -32,9 +32,9 @@
 }
     </style>
 </head>
-<body>
+<body background="./assets/img/fondo_login.jfif">
 <div class="box2">
-      <img src="./assets/img/logo.png" alt="" class="imglogo">
+      <img src="./assets/img/logo.png" alt="" class="imglogo2">
       <form action="javascript:void(0)" method="POST" class="fromRegister">
       <span id="mensaje" style="float: right; font-size:10px;"></span>
         <div class="inputBox2">
@@ -42,15 +42,15 @@
           <label for="">Nombre Usuario</label>
         </div>  
         <div class="inputBox2">
-          <input type="text" name="nombre" placeholder="Ingrese Nombre" onkeypress="return justLetters(event)" onKeyUp="this.value=this.value.toUpperCase();">
+          <input type="text" name="nombre" placeholder="Ingrese Nombre" id="nombre" onkeypress="return justLetters(event)" onKeyUp="this.value=this.value.toUpperCase();">
           <label for="">Ingrese Nombre y Apellido</label>
         </div>
         <div class="inputBox2">
-          <input type="text" name="apellido" placeholder="Ingrese Apellido"onkeypress="return justLetters(event)"onKeyUp="this.value=this.value.toUpperCase();">
+          <input type="text" name="apellido" placeholder="Ingrese Apellido" id="apellido" onkeypress="return justLetters(event)"onKeyUp="this.value=this.value.toUpperCase();">
           <label for="">Ingrese Apellido</label>
         </div>
         <div class="inputBox2">
-          <input type="password"name="pws" placeholder="Ingrese Contrseña">
+          <input type="password"name="pws" placeholder="Ingrese Contrseña" id="pws">
           <label for="">Ingrese Contraseña </label>
         </div>
         <div id="msgerror"></div>  
@@ -106,7 +106,14 @@ function justLetters(e){
 
   $(document).ready(function($){
     $(".fromRegister").submit(function(e){
-      $.ajax({
+      var ci=$("#uname").val();
+      var nombre=$("#nombre").val();
+      var apellido=$("#apellido").val();
+      var pws=$("#pws").val();
+      if(ci==''||nombre==''||apellido==''||pws==''){
+        swal("Debe llenar todos los campos","Se requieren llenar campos", "info");
+      }else{
+        $.ajax({
         type: "POST",
         url: "index.php?c=User&a=registerUser",
         data: $(this).serialize(),
@@ -123,6 +130,7 @@ function justLetters(e){
           }
         }
       });
+      }
     });
   });
   function validateExisUser(){

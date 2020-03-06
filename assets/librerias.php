@@ -15,7 +15,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="assets/js/index.js" type="text/javascript"></script>
  <!--   <link rel="stylesheet" href="assets/css/style.css">--->
-    <link rel="stylesheet" href="assets/css/cat.css">
+
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/prox.css">
     <link rel="stylesheet" href="assets/css/style.css">

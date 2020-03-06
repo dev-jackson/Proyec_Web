@@ -70,18 +70,17 @@
         <div class="card_content">
           <h2 class="card_title">Descripcion</h2>
           <p class="card_text"><?php echo $r['descripcion'];?>
-          <p>Fecha: <?php //echo $rs['fecha'];?></p></p>
-          <h5 >Operacion:</h3>
+          <p>Costo: <?php echo $r['costo'];?></p></p>
           <?php
-             if(!empty($_SESSION)){
+          if(!empty($_SESSION)){
               if(isset($_SESSION['A'])){
+                echo "<h5 >Operacion:</h3>";
                 echo "<button id='Eliminar' class='btn card_btn' name='subject' type='submit' value='".$r['id_articulo']." ".$r['id_genero']." ".$r['id_tipo']."'>Eliminar</button>";
-                echo "<a id='Actualizar' class='btn card_btn' href='index.php?c=Admin&a=UpdateArticulo&id_art=".$r['id_articulo']."' >Actualizar</a>";
-              }elseif($_SESSION['C']){
-                echo "<button id='Agregar' class='btn card_btn' name='subject' type='submit' value='".$r['id_articulo']." ".$r['id_genero']." ".$r['id_tipo']."'>Aregar a Deseos</button>";
+                echo "<a id='Actualizar' class='btn card_btn' href='index.php?c=Admin&a=UpdateArticulo&id_art=".$r['id_articulo']."'>Actualizar</a>";
+              }elseif(isset($_SESSION['C'])){
+                echo "<button id='Agregar'  class='btn card_btn'  value='".$r['id_articulo']." ".$_SESSION['C']." ".$r['id_tipo']."'>Aregar a Deseos</button>";
               }
           }
-  
              //echo "<a class='btn card_btn' href='index.php?c=Admin&a=updateEstado&es=R'>Rechazar</a>";
           ?>
         </div>
@@ -92,21 +91,74 @@ endforeach;?> </ul>
 </div>    
 </body>
 <script>
-$(document).ready(function(e){
-            $("#Eliminar").on('click',function(e){
-                //console.log();
-                swal({
+$(document).on("click","#Agregar",function(){
+            swal({
                      closeOnClickOutside:false,
                      title: "Aviso !",
-                     text: "Esta seguro de cerrar Sesion",
+                     text: "Esta seguro de Agregar Deseo?",
                      icon: "warning",
                      buttons: {
                      si:{ 
-                      text:"si",
+                      text:"SI",
                       value:"si"
                       },
                       no:{ 
-                      text:"no",
+                      text:"NO",
+                      value:"no"
+                      },
+                      },
+                })
+                .then((value) => {
+                switch (value) {                                     
+                case "si":
+                var cadena=this.value.split(" ",3);
+                var date={
+                  "id_art": cadena[0],
+                  "name": cadena[1]
+                };
+                $.ajax({
+                    type:"POST",
+                    url: "index.php?c=Client&a=AgregarDeseos",
+                    data: date,
+                    success: function(data){
+                        if(data){
+                            /*swal("Articulo Agregado a Deseos","Correcto","success");
+                            setTimeout(() => {
+                            window.location.href="index.php?c=User&a=showAllArticulosH"
+                            }, 1500);*/
+                            console.log(data);
+                        }else{
+                            swal("Articulo no Agregado a Deseos","Articulo Erroneo",'error');
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                }); 
+                break;
+                case "no":
+                               
+                  break;
+            }
+          });
+        });
+        //function add(){
+           
+        //}
+        $(document).on("click","#Eliminar",function(){
+            swal({
+                     closeOnClickOutside:false,
+                     title: "Aviso !",
+                     text: "Esta seguro de Eliminar Articulo",
+                     icon: "warning",
+                     buttons: {
+                     si:{ 
+                      text:"SI",
+                      value:"si"
+                      },
+                      no:{ 
+                      text:"NO",
                       value:"no"
                       },
                       },
@@ -120,7 +172,6 @@ $(document).ready(function(e){
                   id_ge: cadena[1],
                   id_tipo: cadena[2]
                 };
-                e.preventDefault();
                 $.ajax({
                     type:"POST",
                     url: "index.php?c=Admin&a=deleteArticulo",
@@ -145,7 +196,6 @@ $(document).ready(function(e){
             }
           });
             });
-          
-        });
+
 </script>
 </html>

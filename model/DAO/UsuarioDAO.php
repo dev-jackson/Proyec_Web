@@ -70,9 +70,23 @@
                 $stm->execute(array($id_user,$id_articulo));
                 return true;
             }catch(PDOException $e){
-                echo $e->getMessage();
+                echo $e->getMessage().$id_user;
                 return false;
             }
+       }
+       public function deltDeseo($id_usuario,$id_articulo){
+        $sqlD="delete from `usuario_articulo` where id_usuario= ? and id_articulo= ?";
+        try{
+            $stm = $this->con->prepare($sqlD);
+            $stm->execute(array(
+                $id_usuario,
+                $id_articulo
+            ));
+            return true;
+        }catch(PDOException $e){
+            return false;
+            echo $e->getMessage();
+        }
        }
    } 
 ?>

@@ -80,6 +80,7 @@ body {
         box-shadow: 0 10px 20px rgba(255, 255, 255, 0.99);
         border-radius: 20px;
     }
+    
     body {
         margin: 0;
         padding: 0;
@@ -93,9 +94,9 @@ body {
 .box2{
     top: 50%;
     left: 50%;
-    transform: translate(75%,10%);
-    width: 40%;
-    padding:  60px;
+    transform: translate(50%,18%);
+    width: 50%;
+    padding: 30px;
     background: rgba(255, 255, 255, 0.99);
     box-sizing: border-box;
     box-shadow: 0 10px 20px rgba(255, 255, 255, 0.99);
@@ -106,6 +107,12 @@ body {
     width: 80%;
     margin: 1%;
     padding: 0;
+    text-align: center;
+}
+.imglogo2{
+    height: 150px;
+    width: 100%;
+    padding:5px 150px;
     text-align: center;
 }
 .box2 .inputBox2{
@@ -154,12 +161,28 @@ body {
         padding: 0;
         text-align: center;
     }
+    .imglogo2{
+        height: 50px;
+        width: 100%;
+        padding:0px 50px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
     .box{
         top: 50%;
         left: 50%;
         transform: translate(50%,45%);
         width:50%;
         padding:  60px;
+        background: rgba(255, 255, 255, 0.99);
+        box-sizing: border-box;
+        box-shadow: 0 10px 20px rgba(255, 255, 255, 0.99);
+        border-radius: 20px;
+    }
+    .box2{
+        transform: translate(6%,25%);
+        width:90%;
+        padding:60px;
         background: rgba(255, 255, 255, 0.99);
         box-sizing: border-box;
         box-shadow: 0 10px 20px rgba(255, 255, 255, 0.99);

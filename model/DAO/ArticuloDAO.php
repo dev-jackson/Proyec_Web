@@ -93,10 +93,10 @@
                 echo $e->getMessage();
             }
         }
-        public function UpArticulo(Articulo $art,$id_art,$id_ge){
+        public function UpArticulo(Articulo $art){
             $sql= "UPDATE articulo a set a.imagen=?,a.descripcion=?,a.costo=? where id_articulo=?";
-            $sql1 = "UPDATE articulo_tipo art set art.id_tipo=? from articulo a where a.id_articulo=art.id_articulo and a.id_articulo=?";
-            $sql2= "UPDATE articulo_genero ag set ag.id_articulo=? FROM articulo a WHERE ag.id_articulo=a.id_articulo and a.id_articulo=?";
+            $sql1 = "UPDATE articulo_tipo art, articulo a set art.id_tipo=?  where a.id_articulo=art.id_articulo and a.id_articulo=?";
+            $sql2= "UPDATE articulo_genero ag, articulo a set ag.id_genero=? WHERE ag.id_articulo=a.id_articulo and a.id_articulo=?";
             try{
                 $stm = $this->con->prepare($sql);
                 $stm->execute(array($art->getImagen(),

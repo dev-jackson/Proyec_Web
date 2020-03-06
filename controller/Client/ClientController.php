@@ -32,5 +32,15 @@
             require_once 'views/dynamic/MisDeseos.php';
             require_once FOOTER;
         }
+        public function deleteDeseo(){
+            $id_usuario=$_POST['id_usuario'];
+            $id_articulo=$_POST['id_art'];
+            $result=$this->user->deltDeseo($id_usuario,$id_articulo);
+            if($result){
+                echo "t";
+            }else{
+                echo "";
+            }
+        }
     }
 ?>

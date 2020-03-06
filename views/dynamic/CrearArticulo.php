@@ -22,12 +22,12 @@
 }
 .body-upload{
     float:right;
-    width:80%;
+    width:100%;
     display: block;
     flex-wrap: wrap;
     align-content: center;
     text-align: center;
-    padding: 40px 55px  ;
+    padding: 30px 250px  ;
     margin: auto;
     }
 #imgLogoAr{
@@ -48,20 +48,28 @@
 <body style="background:white;">
 
     <div class="body-upload">
-        <form class="form form-vertical" enctype="multipart/form-data" id="addArticulo">
+        <form class="form form-vertical" enctype="multipart/form-data" id=<?php if(isset($res)){
+            echo "updArticulo";
+        }else{
+            echo "addArticulo";
+        }?>
             <div class="col-sm-8">
             <img src="assets/img/logo.png" alt="" srcset="" id="imgLogoAr">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="text">Descripcion<span class="kv-reqd">*</span></label>
-                        <input type="text" class="form-control" name="descript" id="descript" value="<?php echo $res['descripcion'];?>" required>
+                        <input type="text" class="form-control" name="descript" id="descript" value="<?php if(isset($res)){
+                            echo $res['descripcion'];
+                        }else{
+                            echo "";
+                        }?>" required>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="pwd">Valor<span class="kv-reqd">*</span></label>
-                        <input type="number" class="form-control" name="costo" value="<?php echo $res['costo'];?>" required>
+                        <input type="number" step=".02" class="form-control" name="costo" value="<?php echo $res['costo'];?>" required>
                     </div>
                 </div>
             </div>
@@ -69,33 +77,100 @@
             <div class="row">
             <div class="col-sm-6">
             <label for="">Para:</label>
-            <p>
-        <input type="radio" id="test1" name="radio-group" value="Hombre" checked>
-        <label for="test1">Hombre</label>
-        </p>
-        <p>
-        <input type="radio" id="test2" name="radio-group" value="Mujer">
-            <label for="test2">Mujer</label>
-        </p>
+            <?php
+            if(isset($res)){
+                if($res['id_genero']=='1'){
+                    echo "<p>
+                    <input type='radio' id='test1' name='radio-group' value='Hombre' checked>
+                    <label for='test1'>Hombre</label>
+                    </p>
+                    <p>
+                    <input type='radio' id='test2' name='radio-group' value='Mujer'>
+                        <label for='test2'>Mujer</label>
+                    </p>";
+                }else{
+                    echo "<p>
+                    <input type='radio' id='test1' name='radio-group' value='Hombre'>
+                    <label for='test1'>Hombre</label>
+                    </p>
+                    <p>
+                    <input type='radio' id='test2' name='radio-group' value='Mujer' checked>
+                        <label for='test2'>Mujer</label>
+                    </p>";
+                }
+            }else{
+                echo "<p>
+                <input type='radio' id='test1' name='radio-group' value='Hombre' checked>
+                <label for='test1'>Hombre</label>
+                </p>
+                <p>
+                <input type='radio' id='test2' name='radio-group' value='Mujer'>
+                    <label for='test2'>Mujer</label>
+                </p>";
+            }
+            ?>
         
             </div>
             <div class="col-sm-6" >
             <label for="">Tipo:</label>
-            <p>
-        <input type="radio" id="test1" name="radio-group1" value="Ropa" checked>
-        <label for="test1">Ropa</label>
-        </p>
-        <p>
-        <input type="radio" id="test2" name="radio-group1" value="Accesorio">
-            <label for="test2">Accesorio</label>
-        </p>
+            <?php
+            if(isset($res)){
+                if($res['id_tipo']=="1"){
+                    echo " <p>
+                    <input type='radio' id='test1' name='radio-group1' value='Ropa' checked>
+                    <label for='test1'>Ropa</label>
+                    </p>
+                    <p>
+                    <input type='radio' id='test2' name='radio-group1' value='Accesorio'>
+                        <label for='test2'>Accesorio</label>
+                    </p>";
+                }else{
+                    echo " <p>
+                    <input type='radio' id='test1' name='radio-group1' value='Ropa' >
+                    <label for='test1'>Ropa</label>
+                    </p>
+                    <p>
+                    <input type='radio' id='test2' name='radio-group1' value='Accesorio' checked>
+                        <label for='test2'>Accesorio</label>
+                    </p>";
+                }
+            }else{
+                echo " <p>
+                <input type='radio' id='test1' name='radio-group1' value='Ropa' checked>
+                <label for='test1'>Ropa</label>
+                </p>
+                <p>
+                <input type='radio' id='test2' name='radio-group1' value='Accesorio'>
+                    <label for='test2'>Accesorio</label>
+                </p>";
+            }
+            ?>
             </div>
             <div class="row">
-            <span>Selecione Nuevamente</span>
-                <input type='file' class="inputFile" name="imagen"  id="imagen" required/>
-                <img id="blah" src="<?php echo $res['imagen'];?>" width="200px"/>
+                <input type='file' class="inputFile" name="imagen"  id="imagen" <?php if(isset($res)){
+                    echo "";
+                }else{
+                    echo "required";
+                }?>/>
+                <img id="blah" src="<?php if(isset($res)){
+                    echo $res['imagen'];
+                }else{
+                    echo "assets/img/image.png";
+                }?>" width="200px"/>
+                <div>
+                <?php if(isset($res)){
+                    echo "<input type='text' name='imagenText' id='imagenText' value='".$res['imagen']."' readonly>";
+                    echo "<input type='text' name='id_arti' id='id_arti' value='".$res['id_articulo']."' readonly>";
+                }else{
+
+                }?>
                 </div>
-                    <button type="submit" name="save" class="btn-enviar">Subir Articulo</button>
+                </div>
+                    <button type="submit" name="save" class="btn-enviar"><?php if(isset($res)){
+                         echo "Actualizar Articulo";
+                    }else{
+                        echo "Subir Articulo";
+                    }?></button>
                 </div>
             </div>
         </div>
@@ -147,6 +222,29 @@ $("#imagen").change(function() {
                             setTimeout(() => {
                             window.location.href="index.php?c=User&a=showAllArticulosH"
                             }, 1500);
+                        }else{
+                            swal("Usuario no Creado","Articulo Erroneo",'error')
+                        }
+                    }
+                });
+            });
+            $("#updArticulo").on('submit',function(e){
+                e.preventDefault();
+                $.ajax({
+                    type:"POST",
+                    url:"index.php?c=Admin&a=UpdateArt",
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(data){
+                        if(data){
+                            swal("Articulo Actualizado","Correcto","success");
+                            setTimeout(() => {
+                            window.location.href="index.php?c=User&a=showAllArticulosH"
+                            }, 1500);
+                            
+                            
                         }else{
                             swal("Usuario no Creado","Articulo Erroneo",'error')
                         }
