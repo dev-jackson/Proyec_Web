@@ -75,6 +75,35 @@
             session_destroy();
             header("Location: index.php?");
         }
+        public function verficarCookie(){
+            $ip =$_POST['IP'];
+            $sm =$_POST['SN'];
+            $sp =$_POST['SP'];
+            $name =$_POST['NAME'];
+            $res=$this->user->getCookie($ip,$sm,$sp,$name);
+            if(!empty($res)){
+                    if($res['ip']!=$ip||$res['server_name']!=$sm||$res['server_port']!=$sp||$res['user_cookie']!=$name){
+                        echo "t";
+                    }else{
+                        echo "";
+                    }
+                
+            }else{
+                echo "t";            
+            }
+        }
         
+        public function guardarCookie(){
+            $ip =$_POST['IP'];
+            $sm =$_POST['SN'];
+            $sp =$_POST['SP'];
+            $name =$_POST['NAME'];
+            $res = $this->user->saveCookie($ip,$sm,$sp,$name);
+            if($res){
+                echo "t";
+            }else{
+                echo "";
+            }
+        }
     }
 ?>

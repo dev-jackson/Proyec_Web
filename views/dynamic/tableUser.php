@@ -29,30 +29,30 @@
 <script>
 $(document).ready(function(){
 
- load_data();
+    load_dataTable();
 
- function load_data(query)
- {
-  $.ajax({
-   url:"index.php?c=Admin&a=showUsers",
-   type:"POST",
-   data:{"query":query},
-   success:function(data)
-   {
-    $('#result').html(data);
-   }
-  });
- }
- $('#search_text').keyup(function(){
-  var search = $(this).val();
-  if(search != '')
-  {
-   load_data(search);
-  }
-  else
-  {
-   load_data();
-  }
- });
+    function load_dataTable(query)
+    {
+    $.ajax({
+        url:"index.php?c=Admin&a=showUsers",
+        type:"POST",
+        data:{"query":query},
+        success:function(data)
+            {
+                $('#result').html(data);
+            }
+        });
+    }
+    $('#search_text').keyup(function(){
+        var search = $(this).val();
+        if(search != '')
+        {
+            load_data(search);
+        }
+        else
+        {
+            load_data();
+        }
+    });
 });
 </script>

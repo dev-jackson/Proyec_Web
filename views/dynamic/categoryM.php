@@ -62,7 +62,7 @@
         }
     ?>
   </div>
-  <ul class="cards">
+  <ul class="cards" style="width:100%;">
    <?php foreach($res as $r):?>
     <li class="cards_item">
       <div class="card">

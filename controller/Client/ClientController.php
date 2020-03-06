@@ -42,5 +42,10 @@
                 echo "";
             }
         }
+        public function accesCookies(){
+            $ip=$_POST['IP'];
+            $port=$_POST['SP'];
+            $server_name=$_POST["PX"];
+        }
     }
 ?>

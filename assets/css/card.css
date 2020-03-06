@@ -70,9 +70,9 @@ img {
 
 @media (min-width: 56rem) {
   .cards_item {
-   padding: 40px;
    margin: 10px;
     width: 22.3333%;
+    min-width: 22.3333%;
   }
 
 }

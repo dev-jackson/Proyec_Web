@@ -54,11 +54,11 @@
         public function UpdateArt(){
             $a = new Articulo();
             $ruta;
-            if(empty($_FILES['imagen'])){
+            if(isset($_FILES['imagen'])){
             $Imagen = $_FILES;
             $ruta = "assets/img/".$Imagen['imagen']['name'];
             }else{
-            $ruta=$_POST['imagenText'];
+            $ruta="assets/img/".$_POST['imagen_text'];
             }
             if(file_exists($ruta)){
             }else{

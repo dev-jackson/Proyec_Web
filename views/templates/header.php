@@ -67,7 +67,75 @@
            </ul>
        </nav>
     </div>
-   
+   <?php
+        setcookie("IP",$_SERVER['REMOTE_ADDR']);
+        setcookie("SN",$_SERVER['SERVER_NAME']);
+        setcookie("SP",$_SERVER['SERVER_PORT']);
+        if(!empty($_SESSION)){
+            if(isset($_SESSION["C"])){
+               setcookie("NAME",$_SESSION["C"]);
+            }elseif(isset($_SESSION["A"])){
+                setcookie("NAME",$_SESSION["A"]);
+            }
+        }else{
+            setcookie("NAME","GenericUser");
+        }
+   ?>
   <script src="assets/js/index.js"></script>
+  <script>
+      $(document).ready(function(){
+          var dat={
+            "IP":"<?php echo $_COOKIE["IP"];?>",
+            "SN": "<?php echo $_COOKIE["SN"];?>",
+            "SP": "<?php echo $_COOKIE["SP"];?>",
+            "NAME": "<?php echo $_COOKIE["NAME"];?>"
+          };
+          console.log(dat);
+          $.ajax({
+              type:"POST",
+              url:"index.php?c=User&a=verficarCookie",
+              data: dat,
+              success: function(d){
+                  console.log(d);
+                if(d==''){
+                    swal({
+                     closeOnClickOutside:false,
+                     title: "Recomendacion",
+                     text: "Permitir acceso a cookies para mejorar su experiencia",
+                     icon: "warning",
+                     buttons: {
+                     si:{ 
+                      text:"si",
+                      value:"si"
+                      },
+                      no:{ 
+                      text:"no",
+                      value:"no"
+                      },
+                      },
+                })
+                .then((value) => {
+                switch (value) {                                     
+                case "si":
+                    $.ajax({
+                type:"POST",
+                url:"index.php?c=User&a=guardarCookie",
+                data: dat,
+                success:function(data){
+                }
+            });     
+                  break;
+                case "no":
+                               
+                  break;
+            }
+          })
+                }else{
+                    console.log();
+                }
+              }
+          });
+        });
+  </script>
 </header> 
 

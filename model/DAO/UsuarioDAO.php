@@ -70,7 +70,7 @@
                 $stm->execute(array($id_user,$id_articulo));
                 return true;
             }catch(PDOException $e){
-                echo $e->getMessage().$id_user;
+                echo $e->getMessage();
                 return false;
             }
        }
@@ -145,6 +145,37 @@
         {
          echo 'Data Not Found';
         }
+       }
+       public function saveCookie($ip,$sm,$sp,$uc){
+           $sql= "INSERT INTO cookie(ip,server_name,server_port,user_cookie) values(?,?,?,?)";
+           try{
+            $stm= $this->con->prepare($sql);
+            $stm->execute(array(
+                $ip,
+                $sm,
+                $sp,
+                $uc
+            ));
+            return true;
+           }catch(PDOException $e){
+               return false;
+               echo $e->getMessage();
+           }
+       }
+       public function getCookie($ip,$sm,$sp,$name){
+           $sql= "SELECT *FROM cookie where ip= ? and server_name=? and server_port=? and user_cookie=?";
+           try{
+                $stm=$this->con->prepare($sql);
+                $stm->execute(array(
+                    $ip,
+                    $sm,
+                    $sp,
+                    $name
+                ));
+                return $stm->fetch(PDO::FETCH_ASSOC);
+           }catch(PDOException $e){
+                echo $e->getMessage();
+           }
        }
    } 
 ?>

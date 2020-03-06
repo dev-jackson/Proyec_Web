@@ -159,7 +159,7 @@
                 }?>" width="200px"/>
                 <div>
                 <?php if(isset($res)){
-                    echo "<input type='text' name='imagenText' id='imagenText' value='".$res['imagen']."' readonly>";
+                    echo "<input type='text' name='imagen_text' id='imagen_text' value='".explode('/',$res['imagen'])[2]."' readonly>";
                     echo "<input type='text' name='id_arti' id='id_arti' value='".$res['id_articulo']."' readonly>";
                 }else{
 
@@ -230,6 +230,7 @@ $("#imagen").change(function() {
             });
             $("#updArticulo").on('submit',function(e){
                 e.preventDefault();
+               
                 $.ajax({
                     type:"POST",
                     url:"index.php?c=Admin&a=UpdateArt",
@@ -239,10 +240,11 @@ $("#imagen").change(function() {
                     processData: false,
                     success: function(data){
                         if(data){
-                            swal("Articulo Actualizado","Correcto","success");
+                            console.log(data)
+                           /* swal("Articulo Actualizado","Correcto","success");
                             setTimeout(() => {
                             window.location.href="index.php?c=User&a=showAllArticulosH"
-                            }, 1500);
+                            }, 1500);*/
                             
                             
                         }else{
