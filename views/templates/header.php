@@ -44,6 +44,8 @@
                     if(!empty($_SESSION)){
                         if(isset($_SESSION['C'])){
                             echo "<li><a href=index.php?c=Client&a=AllDeseos&name=".$_SESSION['C'].">MIS DESEOS</a></li>";
+                        }elseif(isset($_SESSION['A'])){
+                            echo "<li><a href=index.php?a=dynamic&p=tableUser>USUARIOS</a></li>";
                         }
                     }
                 ?></li>

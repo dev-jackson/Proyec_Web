@@ -88,5 +88,63 @@
             echo $e->getMessage();
         }
        }
+       public function showUser($query){
+           $connc=Connection::getConnection();
+        $output="";
+        if(isset($query))
+        {
+         //$search = mysqli_real_escape_string($connc,trim($query));
+         $query = "
+          SELECT * FROM usuario
+          WHERE id_usuario LIKE '%".$query."%'
+          OR nombre LIKE '%".$query."%' 
+          OR apellido LIKE '%".$query."%' 
+          OR tipo_usuario LIKE '%".$query."%'
+         ";
+        }
+        else
+        {
+         $query = "
+          SELECT * FROM usuario ORDER BY id_usuario
+         ";
+        }
+        $result="";
+        try{
+            $result = $this->con->prepare($query);
+            $result->execute();
+            
+        }catch(Exception $e){
+            echo $e->getMessage();
+        }
+        if(!empty($result))
+        {
+         $output .= '
+          <div class="table-responsive">
+           <table class="table table bordered">
+            <tr>
+             <th>ID</th>
+             <th>Nombre</th>
+             <th>Apellido</th>
+             <th>Tipo Usuario</th>
+            </tr>
+         ';
+         foreach($result as $row)
+         {
+          $output .= '
+           <tr>
+            <td>'.$row["id_usuario"].'</td>
+            <td>'.$row["nombre"].'</td>
+            <td>'.$row["apellido"].'</td>
+            <td>'.$row["tipo_usuario"].'</td>
+           </tr>
+          ';
+         }
+         echo $output;
+        }
+        else
+        {
+         echo 'Data Not Found';
+        }
+       }
    } 
 ?>

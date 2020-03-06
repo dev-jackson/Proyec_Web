@@ -2,10 +2,14 @@
     require_once 'config/config.php';
     require_once 'model/DTO/Articulo.php';
     require_once 'model/DAO/ArticuloDAO.php';
+    require_once 'model/DTO/Usuario.php';
+    require_once 'model/DAO/UsuarioDAO.php';
     class AdminController{
         private $art;
+        private $usr;
         public function __construct(){
             $this->art = new ArticuloDAO();
+            $this->usr = new UsuarioDAO();
         }
         public function AddArticulo(){
             $a = new Articulo();
@@ -77,6 +81,13 @@
                 }else{
                     echo '';
                 }
+        }
+        public function showUsers(){
+            $query="";
+            if(isset($_POST['query'])){
+                $query = $_POST['query']; 
+            }
+            $this->usr->showUser($query);
         }
     }
 ?>

@@ -29,7 +29,7 @@
             <div class="_body">
                 <ul class="l-s-none">
                     <li>Correo: <a style="color: #fff;" href="mailto:melanieo@gmail.com">MellShop@gmail.com</a ></li>
-                    <li>Pagina Creadores:<a href="creadores.html" style="color:#fff;"> Ver Información</a></li>
+                    <li>Pagina Creadores:<a href="index.php?a=static&p=creadores" style="color:#fff;"> Ver Información</a></li>
                     <li>Número de celular: +593 993421833</li>
                 </ul>
             </div>
