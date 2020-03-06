@@ -31,10 +31,10 @@
 <body background="./assets/img/fondo_login.jfif">
 <div class="box">
       <img src="./assets/img/logo.png" alt="" class="imglogo">
-      <form action="javascript:void(0);" method="POST" id="fromLogin">
+      <form action="javascript:void(0);" method="POST" class="fromLogin">
         <div class="inputBox">
            <span id="mensaje" style="float: right;"></span>
-          <input type="text" name="username" id="uname" maxlength="10" onkeypress="return justNumbers(event);">
+          <input type="text" name="uname" id="uname" maxlength="10" onkeypress="return justNumbers(event);">
           <label for="">Username(CI)</label>
         </div>  
         <div class="inputBox">
@@ -85,8 +85,9 @@ $('body').on('keyup', '#uname', function(){
 
   }
 });
-  $(document).ready(function($){
-    $("#fromLogin").submit(function(e){  
+<?php session_status();?>
+  $(document).ready(function(){
+    $(".fromLogin").submit(function(e){  
       var ci=$("#uname").val();
       var pass=$("#pws").val();
       if(ci==''||pass==''){
@@ -95,17 +96,28 @@ $('body').on('keyup', '#uname', function(){
         $.ajax({
           type:"POST",
           url:"index.php?c=User&a=login",
-          data:$(this).serialize(),
-          success:function(data){
-            if(data){
-              swal("Logeo Existoso","Bienvenido","success");
+          data:new FormData(this),
+          cache:false,
+          contentType: false,
+                    cache: false,
+                    processData:false,
+          success: function(respuesta){
+            if(respuesta.trim()=== 't'){
+              swal("Bienvenido","Inicio de Session Exitoso!","success");
               setTimeout(() => {
-                window.location.href="index.php?"
+                window.location.href="index.php?";
               }, 1500);
-            }else{
-              swal("Usuario no contrado","Usuario no existe o credenciales incorrectas",'error')
-            }
-          }
+              }else{
+                swal("Error","Credenciales no Encontradas!","error");
+                setTimeout(() => {
+                  window.location.href="index.php?a=dynamic&p=login";
+                }, 1500);
+            } 
+          },
+          error: function(jqXHR, textStatus, errorThrown){
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
         });
       }
       

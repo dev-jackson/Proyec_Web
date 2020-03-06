@@ -28,6 +28,7 @@
                 $a->setCosto($costo);
                 $a->setTipo($tipo);
                 $a->setPara($para);
+                
                 $resul=$this->art->newArticulo($a);
                 if($resul){
                     echo 't';
@@ -62,6 +63,7 @@
             }
             if(file_exists($ruta)){
             }else{
+                
                 move_uploaded_file($Imagen['imagen']['tmp_name'],$ruta);
             }
             $descript = $_POST['descript'];

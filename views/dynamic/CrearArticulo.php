@@ -159,14 +159,15 @@
                 }?>" width="200px"/>
                 <div>
                 <?php if(isset($res)){
-                    echo "<input type='text' name='imagen_text' id='imagen_text' value='".explode('/',$res['imagen'])[2]."' readonly>";
+                    echo "<input type='text' name='imagen_text' id='imagen_text' value='".$res['imagen']."' readonly>";
                     echo "<input type='text' name='id_arti' id='id_arti' value='".$res['id_articulo']."' readonly>";
                 }else{
 
                 }?>
                 </div>
                 </div>
-                    <button type="submit" name="save" class="btn-enviar"><?php if(isset($res)){
+                    <h4>Selecione Nuevamente la imagen</h4>
+                    <button type="submit" name="save" id="save"disabled="disabled" class="btn-enviar" ><?php if(isset($res)){
                          echo "Actualizar Articulo";
                     }else{
                         echo "Subir Articulo";
@@ -205,6 +206,9 @@ $("#imagen").change(function() {
   readURL(this);
 });
         $(document).ready(function(e){
+            $("#imagen").change(function(){
+                $("#save").prop("disabled", this.files.length == 0);
+                });
             $("#addArticulo").on('submit',function(e){
                 //console.log();
                 e.preventDefault();
@@ -229,8 +233,8 @@ $("#imagen").change(function() {
                 });
             });
             $("#updArticulo").on('submit',function(e){
+                
                 e.preventDefault();
-               
                 $.ajax({
                     type:"POST",
                     url:"index.php?c=Admin&a=UpdateArt",
@@ -241,10 +245,10 @@ $("#imagen").change(function() {
                     success: function(data){
                         if(data){
                             console.log(data)
-                           /* swal("Articulo Actualizado","Correcto","success");
+                           swal("Articulo Actualizado","Correcto","success");
                             setTimeout(() => {
                             window.location.href="index.php?c=User&a=showAllArticulosH"
-                            }, 1500);*/
+                            }, 1500);
                             
                             
                         }else{

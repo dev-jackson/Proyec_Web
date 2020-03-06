@@ -31,9 +31,7 @@
                 require_once HEADER;
                 require_once 'views/dynamic/'.$page.'.php';
                 require_once FOOTER;
-            }
-            
-            
+            } 
         }
     }
 ?>

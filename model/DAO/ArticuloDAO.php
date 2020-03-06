@@ -77,7 +77,7 @@
             }
         }
         public function deltArticulo($id_art,$id_ge,$id_tipo){
-            $sql = "DELETE FROM articulo WHERE id_articulo=?";
+            $sql = "DELETE FROM articulo WHERE id_articulo = ?";
             $sql1 = "DELETE FROM articulo_genero WHERE id_articulo= ? and id_genero=?";
             $sql2= "DELETE FROM articulo_tipo WHERE id_articulo=? and id_tipo=?";
             try{

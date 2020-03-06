@@ -75,7 +75,7 @@
           if(!empty($_SESSION)){
               if(isset($_SESSION['A'])){
                 echo "<h5 >Operacion:</h3>";
-                echo "<button id='Eliminar' class='btn card_btn' name='subject' type='submit' value='".$r['id_articulo']." ".$r['id_genero']." ".$r['id_tipo']."'>Eliminar</button>";
+                echo "<option id='Eliminar' class='btn card_btn'  value='".$r['id_articulo']." ".$r['id_genero']." ".$r['id_tipo']."'>Eliminar</option>";
                 echo "<a id='Actualizar' class='btn card_btn' href='index.php?c=Admin&a=UpdateArticulo&id_art=".$r['id_articulo']."'>Actualizar</a>";
               }elseif(isset($_SESSION['C'])){
                 echo "<button id='Agregar'  class='btn card_btn'  value='".$r['id_articulo']." ".$_SESSION['C']." ".$r['id_tipo']."'>Aregar a Deseos</button>";
@@ -91,6 +91,58 @@ endforeach;?> </ul>
 </div>    
 </body>
 <script>
+$(document).ready(function(){
+  $(document).on("click","#Eliminar",function(){
+            swal({
+                     closeOnClickOutside:false,
+                     title: "Aviso !",
+                     text: "Esta seguro de Eliminar Articulo",
+                     icon: "warning",
+                     buttons: {
+                     si:{ 
+                      text:"SI",
+                      value:"si"
+                      },
+                      no:{ 
+                      text:"NO",
+                      value:"no"
+                      },
+                      },
+                })
+                .then((value) => {
+                switch (value) {                                     
+                case "si":
+                  var cadena=$(this).val().split(" ",3);
+                var date={
+                  id_art: cadena[0],
+                  id_ge: cadena[1],
+                  id_tipo: cadena[2]
+                };
+                $.ajax({
+                    type:"POST",
+                    url: "index.php?c=Admin&a=deleteArticulo",
+                    data: date,
+                    //dataType:"json",
+                    success: function(data){
+                        if(data){
+                            swal("Articulo Eliminado","Correcto","success");
+                            setTimeout(() => {
+                            window.location.href="index.php?c=User&a=showAllArticulosH"
+                            }, 1500);
+                            console.log(data);
+                        }else{
+                            swal("Usuario no Creado","Articulo Erroneo",'error')
+                        }
+                    }
+                });    
+                  break;
+                case "no":
+                               
+                  break;
+            }
+          });
+            });
+});
 $(document).on("click","#Agregar",function(){
             swal({
                      closeOnClickOutside:false,
@@ -128,7 +180,7 @@ $(document).on("click","#Agregar",function(){
                             }, 1500);*/
                             console.log(data);
                         }else{
-                            swal("Articulo no Agregado a Deseos","Articulo Erroneo",'error');
+                           swal("Articulo no Agregado a Deseos","Articulo Erroneo",'error');
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown){
@@ -146,56 +198,7 @@ $(document).on("click","#Agregar",function(){
         //function add(){
            
         //}
-        $(document).on("click","#Eliminar",function(){
-            swal({
-                     closeOnClickOutside:false,
-                     title: "Aviso !",
-                     text: "Esta seguro de Eliminar Articulo",
-                     icon: "warning",
-                     buttons: {
-                     si:{ 
-                      text:"SI",
-                      value:"si"
-                      },
-                      no:{ 
-                      text:"NO",
-                      value:"no"
-                      },
-                      },
-                })
-                .then((value) => {
-                switch (value) {                                     
-                case "si":
-                  var cadena=$("#Eliminar").val().split(" ",3);
-                var date={
-                  id_art: cadena[0],
-                  id_ge: cadena[1],
-                  id_tipo: cadena[2]
-                };
-                $.ajax({
-                    type:"POST",
-                    url: "index.php?c=Admin&a=deleteArticulo",
-                    data: date,
-                    dataType:"json",
-                    success: function(data){
-                        if(data){
-                            swal("Articulo Eliminado","Correcto","success");
-                            setTimeout(() => {
-                            window.location.href="index.php?c=User&a=showAllArticulosH"
-                            }, 1500);
-                            console.log(data);
-                        }else{
-                            swal("Usuario no Creado","Articulo Erroneo",'error')
-                        }
-                    }
-                });    
-                  break;
-                case "no":
-                               
-                  break;
-            }
-          });
-            });
+      
 
 </script>
 </html>

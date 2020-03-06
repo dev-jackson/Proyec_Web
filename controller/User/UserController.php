@@ -13,24 +13,25 @@
         }
 
         public function login(){
-            $nombre = $_POST['username'];
+            $nombre = $_POST['uname'];
             $clave="";
             if(isset($_POST['pws'])){
                 $clave=$_POST['pws'];
             }
             $res=$this->user->validateUsuario($nombre);
             if(empty($res)){
-                echo "";
-            }elseif(password_verify($clave,$res['clave'])){
-                    echo "e";
+                echo '';
+            }else if(password_verify($clave,$res['clave'])&&$res['id_usuario']==$nombre){
                     session_start();
-                    if($res['tipo_usuario']=="C"){
+                    if($res['tipo_usuario']='C'){
                         $_SESSION['C']=$res['nombre']; 
+                        echo 't';
                     }else{
                         $_SESSION['A']=$res['nombre'];
+                        echo 't';
                     }
             }else{
-                echo "";
+                echo '';
             }
         }
         public function registerUser(){

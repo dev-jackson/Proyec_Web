@@ -42,7 +42,7 @@
        public function validateUsuario($id){
             try{
                 $stm =$this->con->prepare("SELECT *FROM usuario WHERE id_usuario= ? ");
-                $stm->execute(array($id ));
+                $stm->execute(array($id));
                 return $stm->fetch(PDO::FETCH_ASSOC);
             }catch(Exception $e){
                 echo $e->getMessage();
