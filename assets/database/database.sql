@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2020 a las 18:59:26
+-- Tiempo de generación: 06-03-2020 a las 20:26:27
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -42,12 +42,12 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`id_articulo`, `imagen`, `descripcion`, `costo`) VALUES
-(14, 'assets/img/muestra3.jfif', 'Entallado', '15.00'),
-(16, 'assets/img/muestra2.png', 'Entallado', '15.00'),
 (17, 'assets/img/muestra4.png', 'Capucha', '20.00'),
-(18, 'assets/img/s-l300.jpg', 'Camiseta', '25.00'),
-(19, 'assets/img/rBVaR1vm7b6AGwOGAARAE37rAvc025.jpg', 'Entallado', '18.00'),
-(20, 'assets/img/51L9jBAqjgL._UX679_.jpg', 'Entallado', '22.00');
+(19, 'assets/img/rBVaR1vm7b6AGwOGAARAE37rAvc025.jpg', 'Entallado', '28.00'),
+(27, 'assets/img/rBVaR1vm7b6AGwOGAARAE37rAvc025.jpg', 'asda', '15.00'),
+(29, 'assets/img/51L9jBAqjgL._UX679_.jpg', 'asdas', '81.00'),
+(30, 'assets/img/muestra1.png', 'asda', '15.00'),
+(31, 'assets/img/muestra1.png', 'assa', '25.00');
 
 -- --------------------------------------------------------
 
@@ -65,12 +65,8 @@ CREATE TABLE `articulo_genero` (
 --
 
 INSERT INTO `articulo_genero` (`id_articulo`, `id_genero`) VALUES
-(14, 2),
-(16, 2),
-(17, 2),
-(18, 1),
-(19, 1),
-(20, 1);
+(29, 1),
+(30, 2);
 
 -- --------------------------------------------------------
 
@@ -88,12 +84,34 @@ CREATE TABLE `articulo_tipo` (
 --
 
 INSERT INTO `articulo_tipo` (`id_articulo`, `id_tipo`) VALUES
-(14, 1),
-(16, 1),
-(17, 1),
-(18, 1),
-(19, 1),
-(20, 1);
+(29, 1),
+(30, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cookie`
+--
+
+CREATE TABLE `cookie` (
+  `id_cookie` int(11) NOT NULL,
+  `ip` varchar(255) NOT NULL,
+  `server_name` varchar(255) NOT NULL,
+  `server_port` varchar(255) NOT NULL,
+  `user_cookie` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cookie`
+--
+
+INSERT INTO `cookie` (`id_cookie`, `ip`, `server_name`, `server_port`, `user_cookie`) VALUES
+(1, '1', '1', '1', '1'),
+(2, '1', '1', '1', '1'),
+(3, '::1', 'localhost', '80', 'GenericUser'),
+(4, '::1', 'localhost', '80', 'GenericUser'),
+(5, '::1', 'localhost', '80', 'ANGEL'),
+(6, '::1', 'localhost', '80', 'JACKSON');
 
 -- --------------------------------------------------------
 
@@ -184,8 +202,8 @@ CREATE TABLE `usuario_articulo` (
 --
 
 INSERT INTO `usuario_articulo` (`id_usuario`, `id_articulo`) VALUES
-('8888888888', 14),
-('8888888888', 17);
+('8888888888', 17),
+('8888888888', 19);
 
 --
 -- Índices para tablas volcadas
@@ -195,8 +213,7 @@ INSERT INTO `usuario_articulo` (`id_usuario`, `id_articulo`) VALUES
 -- Indices de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  ADD PRIMARY KEY (`id_articulo`),
-  ADD UNIQUE KEY `imagen` (`imagen`);
+  ADD PRIMARY KEY (`id_articulo`);
 
 --
 -- Indices de la tabla `articulo_genero`
@@ -211,6 +228,12 @@ ALTER TABLE `articulo_genero`
 ALTER TABLE `articulo_tipo`
   ADD KEY `id_articulo` (`id_articulo`,`id_tipo`),
   ADD KEY `id_tipo` (`id_tipo`);
+
+--
+-- Indices de la tabla `cookie`
+--
+ALTER TABLE `cookie`
+  ADD PRIMARY KEY (`id_cookie`);
 
 --
 -- Indices de la tabla `genero`
@@ -245,7 +268,13 @@ ALTER TABLE `usuario_articulo`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `id_articulo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_articulo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT de la tabla `cookie`
+--
+ALTER TABLE `cookie`
+  MODIFY `id_cookie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
